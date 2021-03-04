@@ -1,5 +1,10 @@
 # src
 
+This is Elie's playground by vueJS.<br/>
+You might find some useful or not useful here. XP <br/>
+
+## Playground 1 - Rain & Snow Effects
+
 ## Project setup
 ```
 npm install
