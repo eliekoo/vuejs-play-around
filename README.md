@@ -1,9 +1,11 @@
-# src
+# Firstly
 
-This is Elie's playground by vueJS.<br/>
+Hi all, I'm Elie from Malaysia.<br/>
+This is my playground by vueJS.<br/>
 You might find some useful or not useful here. XP <br/>
 
-## Playground 1 - Rain & Snow Effects
+## Playground
+1. Playground 1 - `Rain & Snow Effects`
 
 ## Project setup
 ```
