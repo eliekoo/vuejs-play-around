@@ -31,7 +31,7 @@ export default {
         },
         interaction: {
             type: Boolean,
-            default: true
+            default: false
         },
         size: {
             type: Number,
