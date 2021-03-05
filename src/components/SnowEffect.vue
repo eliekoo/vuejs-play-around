@@ -1,15 +1,16 @@
 <template>
-	<div class="container">
-		<h3>Snow Effect (Merry Christmas~)</h3>
-		<p style="z-index:999;pointer-events: all;"><button @click="setImage('snow')">Snow</button>
-			<button @click="setImage('snowman')">Snow Man</button>
-			<button @click="setImage('santaclaus')">Santa Claus</button>
-			<button @click="setImage('hat')">Santa Hat</button>
-			<button @click="setImage('gift')">Gift</button>
-			<button @click="setImage('tree')">Tree</button>
-		</p>
+	<div class="bg-dark">
+		<h3 style="color: #fff">Snow effect (Merry Christmas~)</h3>
+		<div>
+      <b-button variant="outline-primary" @click="setImage('snow')">Snow</b-button>
+      <b-button variant="outline-secondary" @click="setImage('snowman')">Snow Man</b-button>
+      <b-button variant="outline-success" @click="setImage('tree')">Tree</b-button>
+      <b-button variant="outline-info" @click="setImage('santaclaus')">Santa Claus</b-button>
+      <b-button variant="outline-danger"  @click="setImage('hat')">Santa Hat</b-button>
+      <b-button variant="outline-warning" @click="setImage('gift')">Gift</b-button>
+    </div>
 
-		<div class="body">
+		<div>
 			<snowing
 			v-bind="snowConf"
 			:images="images"

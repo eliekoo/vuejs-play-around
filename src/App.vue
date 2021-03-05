@@ -1,31 +1,30 @@
 <template>
 
 	<div id="app">
-		<header class="page-frame__header">
-			<h1>Vuejs-animation-effect</h1>
-			<div class="nav-topbar">
-				<div class="nav-topbar__list">
-					<div class="nav-topbar__item">
+    <div id="app">
+      <b-navbar toggleable="lg" type="dark" variant="dark">
+        <b-navbar-brand href="/">Home</b-navbar-brand>
 
-						<p><router-link to="/snow"> Go to snow </router-link></p>
-						<p><router-link to="/rain"> Go to rain </router-link></p>
-						<p><router-link to="/test" class="button blue btn-large"> test </router-link></p>
+        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
-					</div>
-				</div>
-			</div>
-		</header>
+        <b-collapse id="nav-collapse" is-nav>
+          <b-navbar-nav>
+            <b-nav-item-dropdown text="Animation" right>
+              <b-dropdown-item href="/snow">Snow</b-dropdown-item>
+              <b-dropdown-item href="/rain">Rain</b-dropdown-item>
+            </b-nav-item-dropdown>
+          </b-navbar-nav>
+        </b-collapse>
+      </b-navbar>
+    </div>
 
-		<div>
-              <section>
-                <router-view></router-view>
-              </section>
-              <!-- <section>
-                <slot name="sidebar"></slot>
-              </section> -->
-            </div>
-		
-	</div>
+    <section>
+      <router-view></router-view>
+    </section>
+    <!-- <section>
+      <slot name="sidebar"></slot>
+    </section> -->
+  </div>
 
 </template>
 
@@ -50,6 +49,8 @@
 	-moz-osx-font-smoothing: grayscale;
 	text-align: center;
 	color: #2c3e50;
-	margin-top: 60px;
+}
+.dropdown-menu {
+  background-color: grey !important; 
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
 
-		<div ref="wrap" class="snow-wrap" :class="{'events-all':interaction, 'hide':hide}" v-if="internal_show">
+		<div ref="wrap" class="snow-wrap background" :class="{'events-all':interaction, 'hide':hide}" v-if="internal_show">
 			<img v-for="(img, index) in images" :key="index" :src="img" style="display: none" class="lis_flake">
 			<canvas ref="canvas" width="100%" height="100%" ></canvas>
 		</div>
@@ -31,7 +31,7 @@ export default {
         },
         interaction: {
             type: Boolean,
-            default: false
+            default: true
         },
         size: {
             type: Number,
@@ -254,27 +254,33 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    .snow-wrap {
-        position: fixed;
-        left: 0;
-        top: 35px;
-        //z-index: 9999;
-        pointer-events: none;
-        height: 100%;
-        width: 100%;
-        &.events-all {
-            touch-action: auto;
-            pointer-events: all;
-        }
-        &.hide {
-            opacity: 0;
-            -webkit-transition: opacity 1s;
-            transition: opacity 1s;        
-        }
-        canvans {
-            display: block;
-            height: 100%;
-            width: 100%;
-        }
+  .background {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    background-color: #343a40;
+  }
+  .snow-wrap {
+    position: fixed;
+    left: 0;
+    margin-top: 0px;
+    //z-index: 9999;
+    pointer-events: none;
+    height: 100%;
+    width: 100%;
+    &.events-all {
+      touch-action: auto;
+      pointer-events: all;
     }
+    &.hide {
+      opacity: 0;
+      -webkit-transition: opacity 1s;
+      transition: opacity 1s;        
+    }
+    canvans {
+      display: block;
+      height: 100%;
+      width: 100%;
+    }
+  }
 </style>

@@ -1,31 +1,35 @@
 <template>
-	<div class="container">
-		<h3>Rain effect</h3>
+	<div class="bg-dark">
+		<h3 style="color: #fff">Rain effect</h3>
+		<div>
+			<b-button variant="outline-info" :class="{'active': light_toggle }" @click="light_toggle = !light_toggle">SPLAT</b-button>
+			<b-button variant="outline-primary" :class="{'active': heavy_toggle }" @click="heavy_toggle = !heavy_toggle">HEAVY</b-button>
+			<b-button variant="outline-light" :class="{'active': single_toggle }" @click="single_toggle = !single_toggle">SINGLE</b-button>
+		</div>
 
-		<div class="body">
+		<div class="background">
 			<div :class="{'light-toggle': light_toggle, 'heavy-toggle': heavy_toggle, 'single-toggle': single_toggle}">
 				<div class="rain front-row" v-html="raindrops"></div>
 			</div>
 			<div class="rain back-row" v-html="backraindrops"></div>
-			<div class="toggles">
-				<div class="light-toggle toggle" :class="{'active': light_toggle }" @click="light_toggle = !light_toggle" >SPLAT</div>
-				<div class="heavy-toggle toggle" :class="{'active': heavy_toggle }" @click="heavy_toggle = !heavy_toggle" >HEAVY</div>
-				<div class="single-toggle toggle" :class="{'active': single_toggle }" @click="single_toggle = !single_toggle" >SINGLE</div>
-			</div>
 		</div>
 
 	</div>
 </template>
 
 <style>
-.body {
-	height: 600px;
+.background {
+	height: 100%;
 	margin: 0;
 	overflow: hidden;
-	background: linear-gradient(to bottom, #2F4F4F, #2F4F4F);
+	/*background: linear-gradient(to bottom, #2F4F4F, #2F4F4F);*/
 }
 
 .rain {
+	background-color: #343a40;
+	height: 100%;
+	margin: 0;
+	overflow: hidden;
 	position: absolute;
 	left: 0;
 	width: 100%;
@@ -157,18 +161,6 @@
 	background-color: rgba(255, 255, 255, 0.4);
 }
 
-.light-toggle {
-	top: 25px;
-}
-
-.heavy-toggle {
-	top: 95px;
-}
-
-.single-toggle {
-	top: 160px;
-}
-
 .single-toggle .drop {
 	display: none;
 }
@@ -193,7 +185,7 @@
 			makeItRain: function() {
 
 				while (this.increment < 100) {
-					var randoHundo = (Math.floor(Math.random() * (98 - 1 + 1) + 1));
+					var randoHundo = (Math.floor(Math.random() * (this.increment) + 1));
 					var randoFiver = (Math.floor(Math.random() * (5 - 2 + 1) + 2));
 					this.increment += randoFiver;
 
