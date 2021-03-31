@@ -12,6 +12,7 @@
             <b-nav-item-dropdown text="Animation" right>
               <b-dropdown-item href="/snow">Snow</b-dropdown-item>
               <b-dropdown-item href="/rain">Rain</b-dropdown-item>
+              <b-dropdown-item href="/firework">Firework</b-dropdown-item>
             </b-nav-item-dropdown>
           </b-navbar-nav>
         </b-collapse>

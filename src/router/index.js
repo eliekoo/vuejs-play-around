@@ -6,6 +6,7 @@ Vue.use(VueRouter)
 const routes = [
   { path: '/rain',                    name: 'rain',                       component: require('./../components/RainEffect.vue').default },
   { path: '/snow',                    name: 'snow',                       component: require('./../components/SnowEffect.vue').default },
+  { path: '/firework',                name: 'firework',                   component: require('./../components/FireworkEffect.vue').default },
   { path: '/test',                    name: 'test',                       component: require('./../components/HelloWorld.vue').default },
   
 ]
