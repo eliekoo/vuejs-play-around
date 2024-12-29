@@ -25,6 +25,11 @@ const routes = [
     component: require("./../components/FireworkEffect.vue").default,
   },
   {
+    path: "/moving-button",
+    name: "MovingButton",
+    component: require("./../components/MovingButton.vue").default,
+  },
+  {
     path: "/test",
     name: "test",
     component: require("./../components/HelloWorld.vue").default,
