@@ -14,7 +14,11 @@
         No
       </button>
     </div>
-    <div class="background hover-count" style="color: #fff">
+    <div
+      v-if="hoverCount >= 1"
+      class="background hover-count"
+      style="color: #fff"
+    >
       You tried to say No: {{ hoverCount }} times
       <br />
       <div v-if="hoverCount > 100" class="sad-emoji">😭</div>
