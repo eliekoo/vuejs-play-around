@@ -30,6 +30,11 @@ const routes = [
     component: require("./../components/MovingButton.vue").default,
   },
   {
+    path: "/tetris",
+    name: "TetrisGame",
+    component: require("./../components/TetrisGame.vue").default,
+  },
+  {
     path: "/test",
     name: "test",
     component: require("./../components/HelloWorld.vue").default,

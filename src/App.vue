@@ -15,6 +15,7 @@
               <b-dropdown-item href="/moving-button"
                 >Moving button</b-dropdown-item
               >
+              <b-dropdown-item href="/tetris">Tetris Game</b-dropdown-item>
             </b-nav-item-dropdown>
           </b-navbar-nav>
         </b-collapse>
