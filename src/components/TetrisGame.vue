@@ -1,6 +1,6 @@
 <template>
   <div class="tetris-container">
-    <h1>Tetris Game (Vue 2)</h1>
+    <h1>Tetris Game</h1>
     <canvas ref="canvas" width="300" height="600"></canvas>
     <div class="info-panel">
       <p>Score: {{ score }}</p>
@@ -8,10 +8,14 @@
       <button @click="resetGame">Restart</button>
     </div>
     <div class="controls">
-      <button @click="movePiece(-1)">⬅</button>
-      <button @click="rotatePiece()">⬆</button>
-      <button @click="movePiece(1)">➡</button>
-      <button @click="dropPiece()">⬇</button>
+      <div class="control-row">
+        <button @click="movePiece(-1)">⬅</button>
+        <button @click="movePiece(1)">➡</button>
+      </div>
+      <div class="control-row">
+        <button @click="rotatePiece()">⟳</button>
+        <button @click="dropPiece()">⬇</button>
+      </div>
     </div>
   </div>
 </template>
@@ -186,13 +190,67 @@ export default {
       });
       this.clearLines();
     },
-    clearLines() {
+    clearLinesOld() {
       this.board = this.board.filter((row) => row.some((cell) => !cell));
       while (this.board.length < 20) {
         this.board.unshift(Array(10).fill(0));
       }
       this.score += 10;
     },
+    clearLines() {
+      const fullRows = [];
+      this.board.forEach((row, index) => {
+        if (row.every((cell) => cell)) {
+          fullRows.push(index);
+        }
+      });
+
+      if (fullRows.length > 0) {
+        // Step 1: Show the animation (flash effect)
+        fullRows.forEach((rowIndex) => {
+          this.board[rowIndex] = Array(10).fill(2); // Temporarily change to a different state
+        });
+        this.drawBoard(); // Re-draw to show the flash effect
+
+        // Step 2: Wait for 300ms, then remove the rows
+        setTimeout(() => {
+          this.board = this.board.filter(
+            (row) => !row.every((cell) => cell === 2)
+          );
+          while (this.board.length < 20) {
+            this.board.unshift(Array(10).fill(0));
+          }
+
+          // Step 3: Adjust score based on number of lines cleared
+          const clearedLines = fullRows.length;
+          if (clearedLines === 1) {
+            this.score += 20;
+          } else if (clearedLines === 2) {
+            this.score += 30;
+          } else if (clearedLines === 3) {
+            this.score += 60;
+          } else if (clearedLines === 4) {
+            this.score += 100; // Tetris!
+          } else {
+            this.score += 10;
+          }
+
+          this.drawBoard(); // Re-draw after clearing
+        }, 300); // Animation duration
+      }
+    },
+
+    showEffect(rows) {
+      this.isShaking = true; // Trigger shake effect
+      this.yeahMessage = "YEAH!";
+      this.yeahPosition = rows[0] * 30; // Position near the cleared row
+
+      setTimeout(() => {
+        this.isShaking = false;
+        this.yeahMessage = "";
+      }, 600); // Effect duration
+    },
+
     togglePause() {
       this.isPaused = !this.isPaused;
     },
@@ -212,19 +270,27 @@ export default {
 </script>
 
 <style scoped>
-.controls {
+/* .controls {
   display: flex;
   justify-content: center;
   gap: 10px;
   margin-top: 10px;
-}
+} */
 .controls button {
   padding: 10px;
   font-size: 20px;
 }
-</style>
-
-<style scoped>
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+.control-row {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 10px;
+}
 .tetris-container {
   display: flex;
   flex-direction: column;
