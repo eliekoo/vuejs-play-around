@@ -7,6 +7,12 @@
       <button @click="togglePause">{{ isPaused ? "Resume" : "Pause" }}</button>
       <button @click="resetGame">Restart</button>
     </div>
+    <div class="controls">
+      <button @click="movePiece(-1)">⬅</button>
+      <button @click="rotatePiece()">⬆</button>
+      <button @click="movePiece(1)">➡</button>
+      <button @click="dropPiece()">⬇</button>
+    </div>
   </div>
 </template>
 
@@ -127,7 +133,7 @@ export default {
       if (this.canMove(0, 1)) {
         this.currentPiece.y++;
       } else {
-        if (this.currentPiece.y <= 0) {
+        if (this.currentPiece.y === 0) {
           alert("Game Over!");
           this.resetGame();
           return;
@@ -204,6 +210,19 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+.controls button {
+  padding: 10px;
+  font-size: 20px;
+}
+</style>
 
 <style scoped>
 .tetris-container {
